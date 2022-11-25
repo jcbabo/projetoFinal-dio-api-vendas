@@ -1,3 +1,6 @@
+# Iniciando o teste em 24/11/2022.
+
+# Proposta inicial da Pottencial Seguradora para o Teste técnico do bootcamp de .NET da DIO.
 ## INSTRUÇÕES PARA O TESTE TÉCNICO
 
 - Crie um fork deste projeto (https://gitlab.com/Pottencial/tech-test-payment-api/-/forks/new). É preciso estar logado na sua conta Gitlab;
