@@ -4,24 +4,24 @@
         <TargetFramework>net6.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>disable</ImplicitUsings>
-        <RootNamespace>tech_test_payment_api</RootNamespace>
+        <RootNamespace>teste_tecnico_api_pagamentos</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="EntityFramework" Version="6.4.4" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.11" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.11">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.11" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.11
-        ">
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers;   buildtransitive</IncludeAssets>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.11">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
         <PackageReference Include="MySql.EntityFrameworkCore" Version="6.0.7" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
     </ItemGroup>
 
 </Project>
