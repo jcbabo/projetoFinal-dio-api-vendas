@@ -1,15 +1,27 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace teste_tecnico_api_pagamentos.Models
 {
     public class Venda
     {
+        [JsonIgnore]
         public int Id { get; set; }
+
+        // [Required(ErrorMessage = "A data da venda é obrigatória.")]
         public DateTime DataVenda { get; set; }
-        public int VendedorId { get; set; }
+
         public string? Status { get; set; }
-        public Vendedor? Vendedor { get; set; }
-        public List<Produto>? Itens { get; set; }
+
+        [Required(ErrorMessage = "O número identificador do vendedor é obrigatório.")]
+        public int? VendedorId { get; set; }
+
+        [JsonIgnore]
+        public virtual Vendedor? Vendedor { get; set; }
+
+        [Required(ErrorMessage = "É necessário que tenha ao menos 1 produto para registrar a venda.")]
+        public virtual List<Produto>? Itens { get; set; }
     }
 }
