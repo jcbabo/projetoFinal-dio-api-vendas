@@ -5,9 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 using teste_tecnico_api_pagamentos.Models;
 using teste_tecnico_api_pagamentos.Models.Dto;
 using teste_tecnico_api_pagamentos.Repository.Interfaces;
-using System;
-using System.Linq;
-using System.Data.Entity;
 
 namespace teste_tecnico_api_pagamentos.Controllers
 {
@@ -53,12 +50,24 @@ namespace teste_tecnico_api_pagamentos.Controllers
                 Status = "aguardando pagamento"
             };
 
-            //TODO
-            // Verificar se o id do Vendedor já existe registrado  adicionar um aviso de erro caso novamente caso não exista.
+            // verifica se o Vendedor Id é zero ou nulo
+            if (_novaVenda.VendedorId == 0 || _novaVenda.VendedorId == null)
+            {
+                return Unauthorized (new {Erro = "O campo 'VendedorId não pode ser nulo ou zero. Aponte o vendedor responsável pela venda."});
+            }
+            else
+            {
+                try
+                {
+                    _repository.Add(_novaVenda);
 
-            _context.Add(_novaVenda);
-
-            return await _repository.SaveChanges() ? Ok("Venda registrada com sucesso!") : BadRequest("Erro ao salvar venda. Refaça a operação.");
+                    return await _repository.SaveChanges() ? Ok("Venda registrada com sucesso!") : BadRequest(new { Erro = "Erro ao salvar venda. Tente refazer a operação" });
+                }
+                catch
+                {
+                    return BadRequest (new {Erro = "Erro ao salvar venda. Tente refazer a operação" });
+                }
+            }      
         }
 
         [HttpGet("BuscaVendaPorId")]
@@ -116,7 +125,6 @@ namespace teste_tecnico_api_pagamentos.Controllers
         // //     {
         // //         return BadRequest(new { Erro = "Não foram encontradas vendas para este vendedor. Confira o identificador do vendedor"});
         // //     }
-            
         // // }
 
         [HttpPut("AtualizaStatusVenda")]
