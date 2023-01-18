@@ -5,6 +5,8 @@
         <Nullable>enable</Nullable>
         <ImplicitUsings>disable</ImplicitUsings>
         <RootNamespace>teste_tecnico_api_pagamentos</RootNamespace>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
     </PropertyGroup>
 
     <ItemGroup>
@@ -22,7 +24,9 @@
         </PackageReference>
         <PackageReference Include="MySql.EntityFrameworkCore" Version="6.0.7" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+        <PackageReference Include="NSubstitute" Version="4.4.0" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+        <PackageReference Include="XUnit" Version="2.4.2" />
     </ItemGroup>
 
 </Project>
