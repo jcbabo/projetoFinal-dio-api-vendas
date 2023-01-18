@@ -11,7 +11,7 @@ namespace teste_tecnico_api_pagamentos.Models
 
         public string? Nome { get; set; }
 
-        
+        [JsonIgnore]
         public virtual int? VendaId { get; set; }
 
         [JsonIgnore]
