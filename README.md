@@ -1,4 +1,4 @@
-# Iniciando o teste em 24/11/2022
+# Iniciado em 24/11/2022 e finalizado em 19/11/2023
 
 ## Proposta inicial da Pottencial Seguradora para o Teste técnico do bootcamp de .NET da DIO
 
@@ -32,10 +32,6 @@
     - A API não precisa ter mecanismos de autenticação/autorização;
     - A aplicação não precisa implementar os mecanismos de persistência em um banco de dados, eles podem ser persistidos "em memória".
 
-## PONTOS QUE SERÃO AVALIADOS
+# OBSERVAÇÕES:
 
-    - Arquitetura da aplicação - embora não existam muitos requisitos de negócio, iremos avaliar como o projeto foi estruturada, bem como camadas e suas responsabilidades;
-    - Programação orientada a objetos;
-    - Boas práticas e princípios como SOLID, DDD (opcional), DRY, KISS;
-    - Testes unitários;
-    - Uso correto do padrão REST;
+### Como no modelo da minha API não é possível registrar uma venda sem que o vendedor responsável por essa venda esteja previamente cadastrado no banco de dados, criei um endpoint para cadastro de vendedores e com isso sempre vincular um VendedorId a compra a ser registrada.

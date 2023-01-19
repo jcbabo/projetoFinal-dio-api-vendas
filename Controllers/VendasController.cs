@@ -62,7 +62,7 @@ namespace teste_tecnico_api_pagamentos.Controllers
             // verifica se o Vendedor Id é zero ou nulo
             if (_novaVenda.VendedorId == 0 || _novaVenda.VendedorId == null)
             {
-                return Unauthorized ("O campo 'VendedorId não pode ser nulo ou zero. Aponte o vendedor responsável pela venda.");
+                return Unauthorized ("O campo 'VendedorId não pode ser nulo ou zero. Aponte o vendedor responsável pela venda ou cadastre-se cadastre-se como vendedor para poder registrar uma venda.");
             }
             else
             {
