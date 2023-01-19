@@ -15,7 +15,7 @@ namespace teste_tecnico_api_pagamentos.Models.Dto
         
         public int? VendedorId { get; set; }
         
-        public List<Produto>? Itens { get; set; }
+        public List<ProdutoDTO>? Itens { get; set; }
         
         public string? Status { get; set; }
     }

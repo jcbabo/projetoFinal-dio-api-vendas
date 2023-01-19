@@ -13,16 +13,12 @@ namespace teste_tecnico_api_pagamentos.Controllers
     public class VendasController : ControllerBase
     {
         private readonly IVendasRepository _repository;
-        private readonly VendaContext _context;
 
-        public VendasController(IVendasRepository repository, VendaContext context)
+        public VendasController(IVendasRepository repository)
         {
             _repository = repository;
-            _context = context;
         }
 
-        // TODO
-        // Verificar por que a data não foi enviada e consta null no banco
         [HttpPost("RegistraVenda")]
         public async Task<IActionResult> RegistraVenda(VendaDTO novaVenda)
         {
@@ -39,7 +35,16 @@ namespace teste_tecnico_api_pagamentos.Controllers
                     Id = item.Id,
                     Nome = item.Nome,
                 };
-                _itens.Add(_produto);
+
+                if (_produto.Id <= 0)
+                {
+                    return Unauthorized("O identificador do produto não pode ser nulo");
+                }
+                else
+                {
+                    _itens.Add(_produto);
+                }
+                
             }
 
             var _novaVenda = new Venda
@@ -50,10 +55,15 @@ namespace teste_tecnico_api_pagamentos.Controllers
                 Status = "aguardando pagamento"
             };
 
+            if (_novaVenda.Itens.Count <= 0)
+            {
+                return Unauthorized("A venda deve conter ao menos 1 item");
+            }
+
             // verifica se o Vendedor Id é zero ou nulo
             if (_novaVenda.VendedorId == 0 || _novaVenda.VendedorId == null)
             {
-                return Unauthorized (new {Erro = "O campo 'VendedorId não pode ser nulo ou zero. Aponte o vendedor responsável pela venda."});
+                return Unauthorized ("O campo 'VendedorId não pode ser nulo ou zero. Aponte o vendedor responsável pela venda.");
             }
             else
             {
@@ -61,11 +71,11 @@ namespace teste_tecnico_api_pagamentos.Controllers
                 {
                     _repository.Add(_novaVenda);
 
-                    return await _repository.SaveChanges() ? Ok("Venda registrada com sucesso!") : BadRequest(new { Erro = "Erro ao salvar venda. Tente refazer a operação" });
+                    return await _repository.SaveChanges() ? Ok("Venda registrada com sucesso!") : BadRequest("Erro ao salvar venda. Tente refazer a operação");
                 }
                 catch
                 {
-                    return BadRequest (new {Erro = "Erro ao salvar venda. Tente refazer a operação" });
+                    return BadRequest ("Erro ao salvar venda. Tente refazer a operação");
                 }
             }      
         }
@@ -146,32 +156,32 @@ namespace teste_tecnico_api_pagamentos.Controllers
             
             if ((!ListaDeStatus.Contains(statusVendaAtualizada)) && statusVendaAtualizada == "aguardando pagamento")
             {
-                return BadRequest( new { Erro = "Status Permitidos para atualização: 'pagamento aprovado', 'enviado para transportadora', 'entregue', 'cancelada'" });
+                return BadRequest("Status Permitidos para atualização: 'pagamento aprovado', 'enviado para transportadora', 'entregue', 'cancelada'");
             }
 
             if (vendaEfetuada.Status == ListaDeStatus[2])
             {
-                return BadRequest(new { Erro = "Alerta: Essa venda já foi entregue" });
+                return BadRequest("Alerta: Essa venda já foi entregue");
             }
             else if (vendaEfetuada.Status == ListaDeStatus[3])
             {
-                return BadRequest(new { Erro = "Alerta: Essa venda foi cancelada." });
+                return BadRequest("Alerta: Essa venda foi cancelada.");
             }
 
             if (vendaEfetuada.Status == "aguardando pagamento")
             {
                 if (statusVendaAtualizada != ListaDeStatus[0] && statusVendaAtualizada != ListaDeStatus[3])
-                    return BadRequest( new { Erro = "Status atual: 'Aguardando pagamento'. Atualizações permitidas: 'pagamento aprovado' ou 'cancelada'" });
+                    return BadRequest("Status atual: 'Aguardando pagamento'. Atualizações permitidas: 'pagamento aprovado' ou 'cancelada'");
             }
             else if (vendaEfetuada.Status == ListaDeStatus[0])
             {
                 if (statusVendaAtualizada != ListaDeStatus[1] && statusVendaAtualizada != ListaDeStatus[3])
-                    return BadRequest(new { Erro = "Status atual: 'Pagamento aprovado'. Atualizações permitidas: 'enviado para a transportadora' ou 'cancelada'" });
+                    return BadRequest("Status atual: 'Pagamento aprovado'. Atualizações permitidas: 'enviado para a transportadora' ou 'cancelada'");
             }
             else if (vendaEfetuada.Status == ListaDeStatus[1])
             {
                 if (statusVendaAtualizada != ListaDeStatus[2])
-                    return BadRequest(new { Erro = "Status atual: 'Enviado para a transportadora'. Atualização permitida: 'entregue'" });
+                    return BadRequest("Status atual: 'Enviado para a transportadora'. Atualização permitida: 'entregue'");
             }
             
             vendaEfetuada.Status = statusVendaAtualizada;
