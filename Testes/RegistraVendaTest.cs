@@ -56,7 +56,7 @@ namespace teste_tecnico_api_pagamentos.Testes
             
             Assert.Equal(200, okResult.StatusCode);
         }
-
+    
 
         [Fact]
         public async Task RegistraVenda_QuandoVendedorEhZeroOuNulo_RetornaUnauthorized()

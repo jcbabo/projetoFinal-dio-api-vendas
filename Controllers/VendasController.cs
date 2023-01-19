@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using teste_tecnico_api_pagamentos.Context;
 using Microsoft.AspNetCore.Mvc;
 using teste_tecnico_api_pagamentos.Models;
 using teste_tecnico_api_pagamentos.Models.Dto;
@@ -91,51 +90,32 @@ namespace teste_tecnico_api_pagamentos.Controllers
                 return NotFound("Venda não encontrada!");
         }
 
-        // [HttpPost("CadastraVendedor")]
-        // public async Task<IActionResult> CadastraVendedor(VendedorDTO vendedor)
-        // {
-        //     var NomeSobrenomeFormatado = vendedor.NomeSobrenome!.ToLower();
+        [HttpPost("CadastraVendedor")]
+        public async Task<IActionResult> CadastraVendedor(VendedorDTO vendedor)
+        {
+            var NomeSobrenomeFormatado = vendedor.NomeSobrenome!.ToLower();
 
-        //     var _vendedor = new Vendedor
-        //     {
-        //         NomeSobrenome = NomeSobrenomeFormatado,
-        //         CPF = vendedor.CPF,
-        //         Email = vendedor.Email,
-        //         Telefone = vendedor.Telefone
-        //     };
+            var _vendedor = new Vendedor
+            {
+                NomeSobrenome = NomeSobrenomeFormatado,
+                CPF = vendedor.CPF,
+                Email = vendedor.Email,
+                Telefone = vendedor.Telefone
+            };
 
-        //     _context.Add(_vendedor);
+            if (_vendedor.NomeSobrenome != "" && _vendedor.CPF != "")
+            {
+                _repository.Add(_vendedor);
 
-        //     return await _repository.SaveChanges() ? Ok("Vendedor cadastrado com sucesso") : BadRequest("Erro ao cadastrar o vendedor. Tente novamente.");
-        // }
+                var okResult = await _repository.SaveChanges();
 
-        
-        // [HttpGet("ListaVendedores")]
-        // public IEnumerable<Vendedor> ListaVendedores()
-        // {
-        //     return _context.Vendedor!;
-        // }
-
-
-        // TODO
-        // é preciso iterar pelas vendas para verificar se contém o id do parâmetro e assim armazenar numa lista. Depois retornar essa lista de vendas
-        // // [HttpGet("BuscaVendasPorVendedorId")]
-        // // public IActionResult GetVendasPorVendedorById(int vendedorId)
-        // // {
-        // //     try
-        // //     {
-        // //         var listaDeVendas = _context.InfoVendas
-        // //         .Include(x => x.Vendedor)
-        // //         .Include(x => x.Itens)
-        // //         .Where(x => x.VendedorId == vendedorId).ToList();
-
-        // //         return Ok(listaDeVendas);
-        // //     }
-        // //     catch
-        // //     {
-        // //         return BadRequest(new { Erro = "Não foram encontradas vendas para este vendedor. Confira o identificador do vendedor"});
-        // //     }
-        // // }
+                return Ok("Vendedor cadastrado com sucesso");
+            }
+            else 
+            {
+                return Unauthorized("Pelo menos o Nome e CPF do vendedor devem ser preenchidos");
+            }
+        }
 
         [HttpPut("AtualizaStatusVenda")]
         public async Task<IActionResult> AtualizaStatusVenda(int id, string status)
