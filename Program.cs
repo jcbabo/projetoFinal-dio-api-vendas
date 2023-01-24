@@ -5,9 +5,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MySql.EntityFrameworkCore.Extensions;
-using teste_tecnico_api_pagamentos.Context;
-using teste_tecnico_api_pagamentos.Repository;
-using teste_tecnico_api_pagamentos.Repository.Interfaces;
+using api_vendas.Context;
+using api_vendas.Repository;
+using api_vendas.Repository.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 

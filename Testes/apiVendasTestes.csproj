@@ -23,7 +23,7 @@
     </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\teste-tecnico-api-pagamentos.csproj" />
+    <ProjectReference Include="..\api-vendas.csproj" />
   </ItemGroup>
 
 </Project>

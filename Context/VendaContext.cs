@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using teste_tecnico_api_pagamentos.Models;
+using api_vendas.Models;
 
-namespace teste_tecnico_api_pagamentos.Context
+namespace api_vendas.Context
 {
     public class VendaContext : DbContext
     {

@@ -3,11 +3,11 @@ using System;
 using NSubstitute;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using teste_tecnico_api_pagamentos.Controllers;
-using teste_tecnico_api_pagamentos.Repository.Interfaces;
-using teste_tecnico_api_pagamentos.Models.Dto;
+using api_vendas.Controllers;
+using api_vendas.Repository.Interfaces;
+using api_vendas.Models.Dto;
 
-namespace teste_tecnico_api_pagamentos.Testes
+namespace api_vendas.Testes
 {
 
     public class CadastraVendedorTest

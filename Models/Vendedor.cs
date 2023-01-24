@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace teste_tecnico_api_pagamentos.Models
+namespace api_vendas.Models
 {
     public class Vendedor
     {

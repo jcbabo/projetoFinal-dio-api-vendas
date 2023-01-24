@@ -1,8 +1,8 @@
-using teste_tecnico_api_pagamentos.Repository.Interfaces;
-using teste_tecnico_api_pagamentos.Context;
+using api_vendas.Repository.Interfaces;
+using api_vendas.Context;
 using System.Threading.Tasks;
 
-namespace teste_tecnico_api_pagamentos.Repository
+namespace api_vendas.Repository
 {
     public class BaseRepository : IBaseRepository
     {

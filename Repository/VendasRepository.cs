@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using teste_tecnico_api_pagamentos.Repository.Interfaces;
-using teste_tecnico_api_pagamentos.Context;
-using teste_tecnico_api_pagamentos.Models;
+using api_vendas.Repository.Interfaces;
+using api_vendas.Context;
+using api_vendas.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace teste_tecnico_api_pagamentos.Repository
+namespace api_vendas.Repository
 {
     public class VendasRepository : BaseRepository, IVendasRepository
     {

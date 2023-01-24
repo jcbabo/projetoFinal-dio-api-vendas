@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace teste_tecnico_api_pagamentos.Repository.Interfaces
+namespace api_vendas.Repository.Interfaces
 {
     public interface IBaseRepository
     {

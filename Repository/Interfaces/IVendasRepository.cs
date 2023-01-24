@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using teste_tecnico_api_pagamentos.Models;
+using api_vendas.Models;
 
-namespace teste_tecnico_api_pagamentos.Repository.Interfaces
+namespace api_vendas.Repository.Interfaces
 {
     public interface IVendasRepository : IBaseRepository
     {

@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "teste-tecnico-api-pagamentos", "teste-tecnico-api-pagamentos.csproj", "{A0C36C5C-4B28-4145-9531-F218FE2B7AA1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "api-vendas", "api-vendas.csproj", "{A0C36C5C-4B28-4145-9531-F218FE2B7AA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "apiPagamentosTestes", "Testes\apiPagamentosTestes.csproj", "{475E20D3-9BB1-4324-9ABE-56241D2C9AFF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "apiVendasTestes", "Testes\apiVendasTestes.csproj", "{475E20D3-9BB1-4324-9ABE-56241D2C9AFF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 
 
-namespace teste_tecnico_api_pagamentos.Models.Dto
+namespace api_vendas.Models.Dto
 {
     public class VendaDTO
     {

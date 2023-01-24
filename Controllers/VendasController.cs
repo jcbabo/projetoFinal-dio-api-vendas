@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using teste_tecnico_api_pagamentos.Models;
-using teste_tecnico_api_pagamentos.Models.Dto;
-using teste_tecnico_api_pagamentos.Repository.Interfaces;
+using api_vendas.Models;
+using api_vendas.Models.Dto;
+using api_vendas.Repository.Interfaces;
 
-namespace teste_tecnico_api_pagamentos.Controllers
+namespace api_vendas.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
